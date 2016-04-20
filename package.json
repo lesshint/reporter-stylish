@@ -1,0 +1,34 @@
+{
+  "name": "lesshint-reporter-stylish",
+  "version": "1.0.0",
+  "description": "Stylish reporter for lesshint.",
+  "author": "Jonathan Wilsson <jonathan.wilsson@gmail.com>",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lesshint/reporter-stylish.git"
+  },
+  "keywords": [
+    "lesshint",
+    "reporter",
+    "stylish"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-mocha": "^2.1.3",
+    "gulp": "^3.9.0",
+    "rewire": "^2.5.1",
+    "sinon": "^1.17.3"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lesshint/reporter-stylish/issues"
+  }
+}
