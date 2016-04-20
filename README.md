@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/lesshint/reporter-stylish.svg?branch=master)](https://travis-ci.org/lesshint/reporter-stylish)
 
-TeamCity reporter for [lesshint](github.com/lesshint/lesshint).
+Stylish reporter for [lesshint](github.com/lesshint/lesshint).
 
 ## Install
 Install with npm:
