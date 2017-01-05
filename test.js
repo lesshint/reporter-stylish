@@ -1,15 +1,15 @@
 'use strict';
 
-var proxyquire = require('proxyquire');
-var expect = require('chai').expect;
-var chalk = require('chalk');
-var sinon = require('sinon');
+const proxyquire = require('proxyquire');
+const expect = require('chai').expect;
+const chalk = require('chalk');
+const sinon = require('sinon');
 
 /*
  * The Chalk object is read-only so we'll need to stub everything for
  * Sinon to work.
  */
-var chalkStub = Object.create(chalk, {
+const chalkStub = Object.create(chalk, {
     cyan: {
         value: function (str) {
             return chalk.cyan(str);
@@ -46,16 +46,16 @@ const reporter = proxyquire('./index', {
     chalk: chalkStub
 });
 
-describe('reporter:stylish', function () {
-    var colorsEnabled = chalk.enabled;
+describe('reporter:stylish', () => {
+    const colorsEnabled = chalk.enabled;
 
-    beforeEach(function () {
+    beforeEach(() => {
         chalk.enabled = false;
 
         sinon.stub(process.stdout, 'write');
     });
 
-    afterEach(function () {
+    afterEach(() => {
         if (process.stdout.write.restore) {
             process.stdout.write.restore();
         }
@@ -63,8 +63,8 @@ describe('reporter:stylish', function () {
         chalk.enabled = colorsEnabled;
     });
 
-    it('should not print anything when not passed any errors', function () {
-        var errors = [];
+    it('should not print anything when not passed any errors', () => {
+        const errors = [];
 
         sinon.spy(console, 'log');
 
@@ -75,9 +75,8 @@ describe('reporter:stylish', function () {
         console.log.restore();
     });
 
-    it('should print errors with colors', function () {
-        var message;
-        var errors = [{
+    it('should print errors with colors', () => {
+        const errors = [{
             column: 5,
             file: 'file.less',
             line: 1,
@@ -99,16 +98,15 @@ describe('reporter:stylish', function () {
         expect(chalkStub.magenta.called).to.equal(true);
         expect(chalkStub.yellow.called).to.equal(true);
 
-        message = chalk.stripColor(console.log.getCall(0).args[0]);
+        const message = chalk.stripColor(console.log.getCall(0).args[0]);
 
         expect(message).to.equal('Warning: file.less: line 1, col 5, spaceBeforeBrace: Opening curly brace should be preceded by one space.');
 
         console.log.restore();
     });
 
-    it('should not print line when not passed one', function () {
-        var message;
-        var errors = [{
+    it('should not print line when not passed one', () => {
+        const errors = [{
             column: 5,
             file: 'file.less',
             linter: 'spaceBeforeBrace',
@@ -120,16 +118,15 @@ describe('reporter:stylish', function () {
 
         reporter.report(errors);
 
-        message = chalk.stripColor(console.log.getCall(0).args[0]);
+        const message = chalk.stripColor(console.log.getCall(0).args[0]);
 
         expect(message).to.equal('Warning: file.less: col 5, spaceBeforeBrace: Opening curly brace should be preceded by one space.');
 
         console.log.restore();
     });
 
-    it('should not print column when not passed one', function () {
-        var message;
-        var errors = [{
+    it('should not print column when not passed one', () => {
+        const errors = [{
             line: 1,
             file: 'file.less',
             linter: 'spaceBeforeBrace',
@@ -141,16 +138,15 @@ describe('reporter:stylish', function () {
 
         reporter.report(errors);
 
-        message = chalk.stripColor(console.log.getCall(0).args[0]);
+        const message = chalk.stripColor(console.log.getCall(0).args[0]);
 
         expect(message).to.equal('Warning: file.less: line 1, spaceBeforeBrace: Opening curly brace should be preceded by one space.');
 
         console.log.restore();
     });
 
-    it('should print the result severity', function () {
-        var message;
-        var errors = [{
+    it('should print the result severity', () => {
+        const errors = [{
             line: 1,
             file: 'file.less',
             linter: 'spaceBeforeBrace',
@@ -166,7 +162,7 @@ describe('reporter:stylish', function () {
 
         expect(chalkStub.red.called).to.equal(true);
 
-        message = chalk.stripColor(console.log.getCall(0).args[0]);
+        const message = chalk.stripColor(console.log.getCall(0).args[0]);
 
         expect(message).to.equal('Error: file.less: line 1, spaceBeforeBrace: Opening curly brace should be preceded by one space.');
 
