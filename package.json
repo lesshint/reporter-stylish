@@ -21,7 +21,7 @@
     "gulp": "^3.9.0",
     "gulp-eslint": "^3.0.1",
     "gulp-mocha": "^3.0.1",
-    "rewire": "^2.5.1",
+    "proxyquire": "^1.7.10",
     "sinon": "^1.17.3"
   },
   "scripts": {

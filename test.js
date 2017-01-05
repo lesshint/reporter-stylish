@@ -1,7 +1,7 @@
 'use strict';
 
+var proxyquire = require('proxyquire');
 var expect = require('chai').expect;
-var rewire = require('rewire');
 var chalk = require('chalk');
 var sinon = require('sinon');
 
@@ -42,16 +42,17 @@ var chalkStub = Object.create(chalk, {
     }
 });
 
+const reporter = proxyquire('./index', {
+    chalk: chalkStub
+});
+
 describe('reporter:stylish', function () {
-    var reporter = rewire('./index');
     var colorsEnabled = chalk.enabled;
 
     beforeEach(function () {
         chalk.enabled = false;
 
         sinon.stub(process.stdout, 'write');
-
-        reporter.__set__('chalk', chalkStub);
     });
 
     afterEach(function () {
