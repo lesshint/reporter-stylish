@@ -1,11 +1,11 @@
 'use strict';
 
-var chalk = require('chalk');
+const chalk = require('chalk');
 
 module.exports = {
     report: function report (results) {
-        results.forEach(function (result) {
-            var output = '';
+        results.forEach((result) => {
+            let output = '';
 
             if (result.severity === 'error') {
                 output += chalk.red('Error: ');
