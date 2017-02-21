@@ -20,7 +20,7 @@
     "chai": "^3.5.0",
     "gulp": "^3.9.0",
     "gulp-eslint": "^3.0.1",
-    "gulp-mocha": "^3.0.1",
+    "gulp-mocha": "^4.0.1",
     "mocha": "^3.2.0",
     "proxyquire": "^1.7.10",
     "sinon": "^1.17.3"
