@@ -1,6 +1,7 @@
 'use strict';
 
 const proxyquire = require('proxyquire');
+const stripAnsi = require('strip-ansi');
 const expect = require('chai').expect;
 const chalk = require('chalk');
 const sinon = require('sinon');
@@ -98,7 +99,7 @@ describe('reporter:stylish', () => {
         expect(chalkStub.magenta.called).to.equal(true);
         expect(chalkStub.yellow.called).to.equal(true);
 
-        const message = chalk.stripColor(console.log.getCall(0).args[0]);
+        const message = stripAnsi(console.log.getCall(0).args[0]);
 
         expect(message).to.equal('Warning: file.less: line 1, col 5, spaceBeforeBrace: Opening curly brace should be preceded by one space.');
 
@@ -118,7 +119,7 @@ describe('reporter:stylish', () => {
 
         reporter.report(errors);
 
-        const message = chalk.stripColor(console.log.getCall(0).args[0]);
+        const message = stripAnsi(console.log.getCall(0).args[0]);
 
         expect(message).to.equal('Warning: file.less: col 5, spaceBeforeBrace: Opening curly brace should be preceded by one space.');
 
@@ -138,7 +139,7 @@ describe('reporter:stylish', () => {
 
         reporter.report(errors);
 
-        const message = chalk.stripColor(console.log.getCall(0).args[0]);
+        const message = stripAnsi(console.log.getCall(0).args[0]);
 
         expect(message).to.equal('Warning: file.less: line 1, spaceBeforeBrace: Opening curly brace should be preceded by one space.');
 
@@ -162,7 +163,7 @@ describe('reporter:stylish', () => {
 
         expect(chalkStub.red.called).to.equal(true);
 
-        const message = chalk.stripColor(console.log.getCall(0).args[0]);
+        const message = stripAnsi(console.log.getCall(0).args[0]);
 
         expect(message).to.equal('Error: file.less: line 1, spaceBeforeBrace: Opening curly brace should be preceded by one space.');
 
