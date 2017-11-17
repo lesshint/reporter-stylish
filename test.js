@@ -12,31 +12,31 @@ const sinon = require('sinon');
  */
 const chalkStub = Object.create(chalk, {
     cyan: {
-        value: function (str) {
+        value: (str) => {
             return chalk.cyan(str);
         },
         writable: true
     },
     green: {
-        value: function (str) {
+        value: (str) => {
             return chalk.green(str);
         },
         writable: true
     },
     magenta: {
-        value: function (str) {
+        value: (str) => {
             return chalk.magenta(str);
         },
         writable: true
     },
     red: {
-        value: function (str) {
+        value: (str) => {
             return chalk.red(str);
         },
         writable: true
     },
     yellow: {
-        value: function (str) {
+        value: (str) => {
             return chalk.yellow(str);
         },
         writable: true

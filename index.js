@@ -16,11 +16,11 @@ module.exports = {
             output += chalk.cyan(result.file) + ': ';
 
             if (result.line) {
-                output += chalk.magenta('line ' + result.line) + ', ';
+                output += chalk.magenta(`line ${ result.line }`) + ', ';
             }
 
             if (result.column) {
-                output += chalk.magenta('col ' + result.column) + ', ';
+                output += chalk.magenta(`col ${ result.column }`) + ', ';
             }
 
             output += chalk.green(result.linter) + ': ';
