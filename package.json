@@ -20,14 +20,14 @@
     "chai": "^4.0.2",
     "eslint": "^5.0.0",
     "eslint-config-lesshint": "^1.0.3",
-    "mocha": "^5.0.1",
+    "mocha": "^6.0.0",
     "proxyquire": "^2.0.0",
     "sinon": "^7.2.3",
     "strip-ansi": "^5.0.0"
   },
   "scripts": {
     "pretest": "eslint *.js",
-    "test": "mocha"
+    "test": "mocha test.js"
   },
   "license": "MIT",
   "bugs": {
