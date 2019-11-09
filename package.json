@@ -23,7 +23,7 @@
     "mocha": "^6.0.0",
     "proxyquire": "^2.0.0",
     "sinon": "^7.2.3",
-    "strip-ansi": "^5.0.0"
+    "strip-ansi": "^6.0.0"
   },
   "scripts": {
     "pretest": "eslint *.js",
